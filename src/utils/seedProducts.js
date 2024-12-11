@@ -1,9 +1,12 @@
+import db from "../db/db.js"
+import { addDoc, collection } from "firebase/firestore"
+
 const products = [
     {
         id: "1",
         name: "Remera Kloudd Blanco",
         stock: 20,
-        category: "remera",
+        category: "remeras",
         image:"../../../public/remera-negra.jpg",
         price: 15000
     },
@@ -11,7 +14,7 @@ const products = [
         id: "2",
         name: "Remera Kloudd Negra",
         stock: 20,
-        category: "remera",
+        category: "remeras",
         image: "../../../public/remera-blanca.jpg",
         price: 15000
     },    
@@ -19,7 +22,7 @@ const products = [
         id: "3",
         name: "Buzo Negro Kloudd",
         stock: 20,
-        category: "buzo",
+        category: "buzos",
         image:"../../../public/buzo-negro.jpg",
         price: 25000
     },    
@@ -27,7 +30,7 @@ const products = [
         id: "4",
         name: "Buzo Blanco Kloudd",
         stock: 20,
-        category: "buzo",
+        category: "buzos",
         image:"../../../public/buzo-blanco.jpg",
         price: 25000
     },    
@@ -35,7 +38,7 @@ const products = [
         id: "5",
         name: "Pantalon Negro Kloudd",
         stock: 20,
-        category: "pantalon",
+        category: "pantalones",
         image:"../../../public/pantalon-negro.jpg",
         price: 20000
     },    
@@ -43,30 +46,20 @@ const products = [
         id: "6",
         name: "Pantalon Cemento Kloudd",
         stock: 20,
-        category: "pantalon",
+        category: "pantalones",
         image:"../../../public/pantalon-cemento.jpg",
         price: 20000
     },
 ]
 
-
-/*
-const promesa = new Promise ((resolve, reject) => {
-    if(condicion){
-        resolve("se resolvio")
-    }else {
-        reject("se rechazo")
-    }
+const seedProducts = () => {
+    const productsRef = collection(db, "products")
+    products.map(( { id, ...dataProduct } ) => {
+        addDoc(productsRef, dataProduct)
     })
-*/
 
-const getProducts = () => {
-    return new Promise ((resolve, reject) => {
-        
-        setTimeout( ()=>{
-            resolve(products)
-        }, 2000)
-    })
+    console.log("productos subidos")
+    return
 }
 
-export { getProducts }
+seedProducts()

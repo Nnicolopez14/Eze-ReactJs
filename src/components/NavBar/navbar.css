@@ -1,13 +1,52 @@
 .navbar{
+    width: 100%;
+    height: 120px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
+    background-color: white;
 }
 
-.categories{
+.navbar .categories{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4.375rem;
     list-style: none;
-    gap: 2.8125rem;
+}
+
+.categories .category .base-class {
+    color: black;
+    text-decoration: none;
+}
+
+.brand{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-link{
+    color: black;
+    font-weight: bold;
+}
+
+.cartWidget{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cartwidget .icon-cartwidget{
+    font-size: 30px;
+    color: black;
+}
+.cartwidget .empty-cartwidget{
+    font-size: 30px;
+    color: rgb(64, 64, 64);
+}
+.cartwidget .number-cartwidget{
+    padding: 0 10px;
+    color: black;
 }
